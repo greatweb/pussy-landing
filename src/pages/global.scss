@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Play";
+  src: url("../fonts/Play-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  font-family: "Play";
+  font-size: 16px;
+}
+
+@media (width <= 580px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+a {
+  color: #36d6ae;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00ffbf;
+  text-decoration: none;
+}
