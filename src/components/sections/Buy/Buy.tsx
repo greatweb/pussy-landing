@@ -2,11 +2,15 @@ import React from "react"
 import Display from "../../xp/containerGradient/Display/Display"
 import Table from "../../xp/Table/Table"
 import * as styles from "./Buy.module.scss"
+import { StrongText } from "../Main/Main"
+import { MenuIds } from "../../Menu/Menu"
 
 function Buy() {
   return (
-    <>
-      <h3>In $PUSSY we Love</h3>
+    <section id={MenuIds.buy}>
+      <h4>
+        In <StrongText>$PUSSY</StrongText> we trust
+      </h4>
 
       <Display noPadding color="purple">
         <Table
@@ -131,7 +135,7 @@ function Buy() {
           </Display>
         ))}
       </div>
-    </>
+    </section>
   )
 }
 

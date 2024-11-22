@@ -1,0 +1,32 @@
+.section {
+  display: flex;
+
+  header {
+    h4,
+    p {
+      font-weight: 400;
+      color: #d9d9d9;
+    }
+
+    h4 {
+      margin-bottom: 0;
+      font-size: 50px;
+    }
+
+    p {
+      //   margin-top: 0;
+    }
+  }
+
+  img {
+    max-height: 150px;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    header {
+      text-align: right;
+    }
+  }
+}

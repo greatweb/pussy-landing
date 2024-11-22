@@ -1,10 +1,46 @@
 .wrapper {
-  padding: 5% 20%;
+  // color: white;
 
-  color: white;
+  > aside {
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+  }
+
+  > footer {
+    &::before {
+      background-color: black;
+      content: "";
+      height: 130%;
+      left: 0;
+      filter: blur(10px);
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 0;
+    }
+
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
 }
 
 .content {
+  margin-top: -200px;
+  padding: 5% 20%;
   z-index: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 100px 0;
   position: relative;
+
+  > section > h4 {
+    font-size: 50px;
+    text-align: center;
+  }
 }

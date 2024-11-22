@@ -1,0 +1,19 @@
+.section {
+  text-align: center;
+  h4 {
+    // font-size: 50px;
+  }
+
+  p {
+    color: var(--text-color-2);
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+  }
+}

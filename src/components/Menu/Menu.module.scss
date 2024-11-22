@@ -1,0 +1,16 @@
+.wrapper {
+  ul {
+    li + li {
+      margin-top: 18px;
+    }
+    a {
+      color: var(--text-color-2);
+
+      &:hover {
+        color: #00ffbf;
+      }
+    }
+
+    font-size: 14px;
+  }
+}

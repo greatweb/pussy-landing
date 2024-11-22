@@ -1,0 +1,24 @@
+.wrapper {
+  text-align: center;
+
+  > h2 {
+    font-size: 68px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  > p {
+    font-size: 26px;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    max-height: 142px;
+  }
+}

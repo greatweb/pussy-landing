@@ -1,32 +1,33 @@
-import cx from 'classnames';
-import styles from './DisplayTitle.module.scss';
-import { ColorLamp } from '../types';
+import cx from "classnames"
+import * as styles from "./DisplayTitle.module.scss"
+import { ColorLamp } from "../types"
+import React from "react"
 
 type Props = {
-  title: string | React.ReactNode;
-  children?: React.ReactNode;
-  color?: ColorLamp;
+  title: string | React.ReactNode
+  children?: React.ReactNode
+  color?: ColorLamp
 
   // temp prop
-  animationState?: string;
+  animationState?: string
 
   // to remove padding
-  inDisplay?: boolean;
+  inDisplay?: boolean
 
-  image?: React.ReactNode;
-  isImgLarge?: boolean;
-};
+  image?: React.ReactNode
+  isImgLarge?: boolean
+}
 
 // TODO: need remove animation from this component
 function DisplayTitle({
   title,
   children,
-  color = 'white',
+  color = "white",
   inDisplay,
   image,
   isImgLarge,
 
-  animationState: state = 'entered',
+  animationState: state = "entered",
 }: Props) {
   const content = (
     <div className={cx(styles.displayTitle, styles[color])}>
@@ -51,13 +52,13 @@ function DisplayTitle({
         {children && <div className={styles.content}>{children}</div>}
       </div>
     </div>
-  );
+  )
 
   if (inDisplay) {
-    return <div className={styles.noPaddingWrapper}>{content}</div>;
+    return <div className={styles.noPaddingWrapper}>{content}</div>
   }
 
-  return content;
+  return content
 }
 
-export default DisplayTitle;
+export default DisplayTitle
