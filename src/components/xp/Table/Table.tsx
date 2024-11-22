@@ -21,7 +21,9 @@ import Triangle from "../atoms/Triangle/Triangle"
 import { tableIDs } from "./tableIDs"
 import React from "react"
 
-const storage = sessionStorage
+// check ssr
+
+const storage = typeof window !== "undefined" && sessionStorage
 const SS_KEY = "tableSorting"
 
 type TableIDs = typeof tableIDs
