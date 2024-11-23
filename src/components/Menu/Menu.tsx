@@ -15,31 +15,38 @@ const links = [
   {
     label: "$PUSSY",
     href: "#",
+    icon: "🟣",
   },
   {
     label: "spacepussy",
     href: "#spacepussy",
+    icon: "🟣",
   },
 
   {
     label: "frenz",
     href: "#frenz",
+    icon: "🟣",
   },
   {
     label: "vision",
     href: "#vision",
+    icon: "🩻",
   },
   {
     label: "neoreligion",
     href: "#neoreligion",
+    icon: "🎊",
   },
   {
     label: "progress",
     href: "#progress",
+    icon: "📈",
   },
   {
     label: "buy",
     href: "#buy",
+    icon: "🗿",
   },
 ]
 
@@ -67,6 +74,7 @@ function Menu() {
                 }
               }}
             >
+              <span>{link.icon}</span>
               {link.label}
             </a>
           </li>

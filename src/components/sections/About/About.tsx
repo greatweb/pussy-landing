@@ -1,6 +1,4 @@
 import React from "react"
-import Display from "../../xp/containerGradient/Display/Display"
-import DisplayTitle from "../../xp/containerGradient/DisplayTitle/DisplayTitle"
 import * as styles from "./About.module.scss"
 import BlockWithImage from "../../BlockWithImage/BlockWithImage"
 import { MenuIds } from "../../Menu/Menu"
@@ -11,7 +9,7 @@ function About() {
       id={MenuIds.spacepussy}
       title={
         <div>
-          <h4>SpacePussy</h4>
+          <h4>spacepussy</h4>
           <p>symbol of life and pleasure</p>
         </div>
       }
@@ -35,7 +33,7 @@ function About() {
           </p>
         </>
       }
-      image={require("../../../images/pusyan.png").default}
+      image={require("./spacepussy.png").default}
     />
   )
 }

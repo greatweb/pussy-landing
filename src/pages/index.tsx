@@ -6,7 +6,7 @@ import * as styles from "./index.module.scss"
 import "./global.scss"
 import Main from "../components/sections/Main/Main"
 import About from "../components/sections/About/About"
-import Pusyan from "../components/sections/Pusyan/Pusyan"
+import Pussyan from "../components/sections/Pussyan/Pussyan"
 import Balls from "../components/sections/Balls/Balls"
 import Vision from "../components/sections/Vision/Vision"
 import Neoreligion from "../components/sections/Neoreligion/Neoreligion"
@@ -26,7 +26,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className={styles.content}>
         <Main />
         <About />
-        <Pusyan />
+        <Pussyan />
         <Balls />
         <Vision />
         <Neoreligion />

@@ -1,25 +1,32 @@
 .section {
   display: flex;
+  gap: 0 25px;
 
   header {
     h4,
     p {
       font-weight: 400;
-      color: #d9d9d9;
     }
 
     h4 {
-      margin-bottom: 0;
+      margin: 0;
+      margin-top: 17px;
       font-size: 50px;
     }
 
     p {
-      //   margin-top: 0;
+      color: var(--text-color-2);
     }
   }
 
+  > div > div {
+    line-height: 23px;
+  }
+
   img {
-    max-height: 150px;
+    width: 30%;
+    height: auto;
+    object-fit: contain;
   }
 
   &.reverse {
@@ -27,6 +34,10 @@
 
     header {
       text-align: right;
+
+      > div > div > div {
+        justify-content: flex-end;
+      }
     }
   }
 }

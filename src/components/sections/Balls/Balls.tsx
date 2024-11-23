@@ -6,7 +6,7 @@ function Balls() {
     <BlockWithImage
       title={
         <div>
-          <h4>Balls</h4>
+          <h4>balls</h4>
           <p>symbol of will and unlimited growth</p>
         </div>
       }
@@ -20,12 +20,12 @@ function Balls() {
 
           <ul>
             <li>🟢 $BOOT: Bostrom blockchain</li>
-            <li>🟣 $PUSSY, SpacePussy blockchain</li>
-            <li> 🔵 $CYB. Cyber protocol </li>
+            <li>🟣 $PUSSY: SpacePussy blockchain</li>
+            <li> 🔵 $CYB: Cyber protocol </li>
           </ul>
         </>
       }
-      image={require("../../../images/pusyan.png").default}
+      image={require("../../../images/Pussyan.png").default}
     />
   )
 }

@@ -1,18 +1,18 @@
 import React from "react"
-import * as styles from "./Pusyan.module.scss"
+import * as styles from "./Pussyan.module.scss"
 
 import BlockWithImage from "../../BlockWithImage/BlockWithImage"
 import { MenuIds } from "../../Menu/Menu"
 
-function Pusyan() {
+function Pussyan() {
   return (
     <BlockWithImage
       id={MenuIds.frenz}
       reverse
       title={
         <div>
-          <h4>Pusyan</h4>
-          <p>symbol of confidence</p>
+          <h4>pussyan</h4>
+          <p>symbol of confidence and enlightenment</p>
         </div>
       }
       content={
@@ -28,9 +28,9 @@ function Pusyan() {
           <p>Pussyan is a cat with balls.</p>
         </>
       }
-      image={require("../../../images/pusyan.png").default}
+      image={require("../../../images/Pussyan.png").default}
     />
   )
 }
 
-export default Pusyan
+export default Pussyan

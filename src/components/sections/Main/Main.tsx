@@ -31,7 +31,7 @@ function Main() {
           original chain
         </p>
 
-        <img src={require("../../../images/pusyan.png").default} />
+        <img src={require("../../../images/Pussyan.png").default} />
 
         <p>
           other <StrongText>$PUSSY</StrongText> <br />

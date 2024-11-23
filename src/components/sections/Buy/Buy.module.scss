@@ -8,6 +8,7 @@
 
 .blocks {
   display: flex;
+  margin-top: 35px;
   gap: 0 30px;
 
   > div {
@@ -15,8 +16,8 @@
     text-align: center;
 
     p {
-      color: gray;
-      font-size: 12px;
+      color: #616161;
+      font-size: 14px;
     }
   }
 }

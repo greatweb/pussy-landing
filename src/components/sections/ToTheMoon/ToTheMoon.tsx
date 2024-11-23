@@ -17,28 +17,30 @@ function ToTheMoon() {
           <ul>
             <li>
               level 4:
-              <span>$ 1P</span>
+              <span> $ 1P</span>
             </li>
             <li>
               level 3:
-              <span>$ 1T</span>
+              <span> $ 1T</span>
             </li>
             <li>
               level 2:
-              <span>$ 1B</span>
+              <span> $ 1B</span>
             </li>
             <li>
               level 1:
-              <span>$ 1M</span>
+              <span> $ 1M</span>
             </li>
           </ul>
         </Display>
 
-        <img src={require("../../../images/pusyan.png").default} />
+        <img src={require("../../../images/Pussyan.png").default} />
 
-        <Display color="purple" title={<DisplayTitle title={"Pusyan Scale"} />}>
-          method of measuring a civilization's level of technological
-          advancement based on the value of $PUSSY
+        <Display color="purple" title={<DisplayTitle title="pussyan scale" />}>
+          <p className={styles.text}>
+            method of measuring a civilization's level of technological
+            advancement based on the value of $PUSSY
+          </p>
         </Display>
       </div>
 
