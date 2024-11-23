@@ -44,7 +44,7 @@ function ToTheMoon() {
         </Display>
       </div>
 
-      <div>progress</div>
+      {/* <div>progress</div> */}
     </section>
   )
 }

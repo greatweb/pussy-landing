@@ -4,6 +4,12 @@
   align-items: stretch;
   gap: 0 3%;
 
+  header {
+    > div > div {
+      font-size: 30px;
+    }
+  }
+
   > * {
     width: 33.3%;
   }
@@ -29,5 +35,31 @@
 
   .text {
     text-align: center;
+  }
+
+  @media (width <= 480px) {
+    flex-direction: column-reverse;
+    position: relative;
+    gap: 3% 0;
+
+    > * {
+      width: 100%;
+    }
+
+    p {
+      color: #a6a6a6;
+      text-align: left !important;
+      line-height: 30px;
+      font-size: 20px;
+      max-width: 250px;
+    }
+
+    img {
+      position: absolute;
+      z-index: -1;
+      filter: blur(10px);
+      right: 0px;
+      max-width: 100%;
+    }
   }
 }

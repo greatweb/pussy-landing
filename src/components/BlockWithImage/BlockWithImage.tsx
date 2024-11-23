@@ -13,9 +13,12 @@ function BlockWithImage({ title, image, content, id, reverse }) {
       id={id}
     >
       <img src={image} />
-      <Display color="purple" title={<DisplayTitle title={title} />}>
-        {content}
-      </Display>
+
+      <div className={styles.contentWrapper}>
+        <Display color="purple" title={<DisplayTitle title={title} />}>
+          {content}
+        </Display>
+      </div>
     </section>
   )
 }
