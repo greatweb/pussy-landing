@@ -25,7 +25,8 @@ function Balls() {
           </ul>
         </>
       }
-      image={require("../../../images/Pussyan.png").default}
+      id={"balls"}
+      image={require("./balls.svg").default}
     />
   )
 }

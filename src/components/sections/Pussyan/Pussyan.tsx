@@ -7,6 +7,7 @@ import { MenuIds } from "../../Menu/Menu"
 function Pussyan() {
   return (
     <BlockWithImage
+      className={styles.wrapper}
       id={MenuIds.frenz}
       reverse
       title={

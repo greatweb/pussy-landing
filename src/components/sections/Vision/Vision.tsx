@@ -1,5 +1,5 @@
 import React from "react"
-import { StrongText } from "../Main/Main"
+import { StrongText } from "../../StrongText/StrongText"
 import * as styles from "./Vision.module.scss"
 import { MenuIds } from "../../Menu/Menu"
 

@@ -12,6 +12,15 @@
       gap: 0 10px;
       align-items: center;
 
+      img,
+      span {
+        width: 20px;
+      }
+
+      img {
+        height: auto;
+      }
+
       &:hover {
         color: #00ff00;
       }

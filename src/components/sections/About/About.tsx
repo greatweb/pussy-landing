@@ -33,7 +33,7 @@ function About() {
           </p>
         </>
       }
-      image={require("./spacepussy.png").default}
+      image={require("../../../images/spacepussy.png").default}
     />
   )
 }

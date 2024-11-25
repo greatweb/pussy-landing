@@ -13,8 +13,37 @@ import Neoreligion from "../components/sections/Neoreligion/Neoreligion"
 import ToTheMoon from "../components/sections/ToTheMoon/ToTheMoon"
 import Menu from "../components/Menu/Menu"
 import Button from "../components/xp/btnGrd"
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+function getSolData() {
+  return axios.get(
+    "https://api.geckoterminal.com/api/v2/networks/solana/pools/8CUApHrJaRnphTCA5Fvk7ceGNAjsKumbNadJgwio47Gr"
+  )
+}
+
+function getSuiData() {
+  return axios.get(
+    "https://api.geckoterminal.com/api/v2/networks/sui-network/pools/0xfec941f67693777b170dbd84edb14ec5afc1e4e07f65ce8c51286f06bd9615ab"
+  )
+}
 
 const IndexPage: React.FC<PageProps> = () => {
+  const [solanaData, setSolanaData] = useState()
+  const [suiData, setSuiData] = useState()
+
+  useEffect(() => {
+    getSolData().then((res) => {
+      setSolanaData(res.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    getSuiData().then((res) => {
+      setSuiData(res.data)
+    })
+  }, [])
+
   return (
     <main className={styles.wrapper}>
       <Stars />
@@ -31,7 +60,12 @@ const IndexPage: React.FC<PageProps> = () => {
         <Vision />
         <Neoreligion />
         <ToTheMoon />
-        <Buy />
+        <Buy
+          data={{
+            solana: solanaData,
+            sui: suiData,
+          }}
+        />
       </div>
 
       <footer>
@@ -52,4 +86,16 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Pussy</title>
+export const Head: HeadFC = () => {
+  return (
+    <>
+      <title>pussy</title>
+
+      <link
+        rel="icon"
+        type="image/png"
+        href={require("../images/spacepussy.png").default}
+      />
+    </>
+  )
+}

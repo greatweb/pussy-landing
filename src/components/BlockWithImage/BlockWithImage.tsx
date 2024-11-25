@@ -4,10 +4,10 @@ import Display from "../xp/containerGradient/Display/Display"
 import DisplayTitle from "../xp/containerGradient/DisplayTitle/DisplayTitle"
 import classNames from "classnames"
 
-function BlockWithImage({ title, image, content, id, reverse }) {
+function BlockWithImage({ title, image, content, id, reverse, className }) {
   return (
     <section
-      className={classNames(styles.section, {
+      className={classNames(styles.section, className, {
         [styles.reverse]: reverse,
       })}
       id={id}

@@ -15,18 +15,18 @@ const links = [
   {
     label: "$PUSSY",
     href: "#",
-    icon: "🟣",
+    icon: require("../../images/spacepussy.svg").default,
   },
   {
     label: "spacepussy",
     href: "#spacepussy",
-    icon: "🟣",
+    icon: require("../../images/spacepussy.svg").default,
   },
 
   {
     label: "frenz",
     href: "#frenz",
-    icon: "🟣",
+    icon: "👾",
   },
   {
     label: "vision",
@@ -54,31 +54,39 @@ function Menu() {
   return (
     <nav className={styles.wrapper}>
       <ul>
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              onClick={(e) => {
-                if (link.href === "#") {
-                  e.preventDefault()
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                  window.history.pushState({}, "", link.href)
-                  return
-                }
+        {links.map((link) => {
+          const isImg = link.icon.length > 3
+          return (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href === "#") {
+                    e.preventDefault()
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                    window.history.pushState({}, "", link.href)
+                    return
+                  }
 
-                const el = document.getElementById(link.href.slice(1))
-                if (el) {
-                  e.preventDefault()
-                  el.scrollIntoView({ behavior: "smooth" })
-                  window.history.pushState({}, "", link.href)
-                }
-              }}
-            >
-              <span>{link.icon}</span>
-              {link.label}
-            </a>
-          </li>
-        ))}
+                  const el = document.getElementById(link.href.slice(1))
+                  if (el) {
+                    e.preventDefault()
+                    el.scrollIntoView({ behavior: "smooth" })
+                    window.history.pushState({}, "", link.href)
+                  }
+                }}
+              >
+                {isImg ? (
+                  <img src={link.icon} alt={link.label} />
+                ) : (
+                  <span>{link.icon}</span>
+                )}
+
+                {link.label}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

@@ -1,17 +1,6 @@
 import React from "react"
 import * as styles from "./Main.module.scss"
-
-export function StrongText({ children }) {
-  return (
-    <strong
-      style={{
-        color: "#D500F9",
-      }}
-    >
-      {children}
-    </strong>
-  )
-}
+import { StrongText } from "../../StrongText/StrongText"
 
 function Main() {
   return (
@@ -20,7 +9,7 @@ function Main() {
         <StrongText>$PUSSY</StrongText>
       </h2>
       <p>
-        symbol of <StrongText>pleasure</StrongText>,{" "}
+        symbol of <StrongText searchLink>pleasure</StrongText>,{" "}
         <StrongText>confidence</StrongText> and{" "}
         <StrongText>unlimited growth</StrongText>
       </p>
@@ -31,6 +20,7 @@ function Main() {
           original chain
         </p>
 
+        <img src={require("../../../images/spacepussy.svg").default} />
         <img src={require("../../../images/Pussyan.png").default} />
 
         <p>
@@ -40,8 +30,10 @@ function Main() {
       </div>
 
       <p>
-        <StrongText>memecoin</StrongText> with <StrongText>balls</StrongText>,{" "}
-        <StrongText>vision</StrongText> and <StrongText>frienz</StrongText>
+        <StrongText link="#spacepussy">memecoin</StrongText> with{" "}
+        <StrongText link="#balls">balls</StrongText>,{" "}
+        <StrongText link="#vision">vision</StrongText> and{" "}
+        <StrongText link="#frenz">frienz</StrongText>
       </p>
     </section>
   )

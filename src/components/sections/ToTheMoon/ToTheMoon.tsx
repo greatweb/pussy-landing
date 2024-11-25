@@ -1,5 +1,5 @@
 import React from "react"
-import { StrongText } from "../Main/Main"
+import { StrongText } from "../../StrongText/StrongText"
 import Display from "../../xp/containerGradient/Display/Display"
 import DisplayTitle from "../../xp/containerGradient/DisplayTitle/DisplayTitle"
 import * as styles from "./ToTheMoon.module.scss"
@@ -34,7 +34,7 @@ function ToTheMoon() {
           </ul>
         </Display>
 
-        <img src={require("../../../images/Pussyan.png").default} />
+        <img src={require("./moon.png").default} />
 
         <Display color="purple" title={<DisplayTitle title="pussyan scale" />}>
           <p className={styles.text}>

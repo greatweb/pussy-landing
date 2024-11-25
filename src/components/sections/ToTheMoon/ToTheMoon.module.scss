@@ -16,6 +16,8 @@
 
   img {
     max-width: 33%;
+    object-fit: contain;
+    height: auto;
   }
 
   ul {
@@ -58,7 +60,7 @@
       position: absolute;
       z-index: -1;
       filter: blur(10px);
-      right: 0px;
+      right: -250px;
       max-width: 100%;
     }
   }

@@ -2,10 +2,11 @@ import React from "react"
 import Display from "../../xp/containerGradient/Display/Display"
 import Table from "../../xp/Table/Table"
 import * as styles from "./Buy.module.scss"
-import { StrongText } from "../Main/Main"
+import { StrongText } from "../../StrongText/StrongText"
 import { MenuIds } from "../../Menu/Menu"
 
-function Buy() {
+function Buy({ data }) {
+  console.log(data)
   return (
     <section id={MenuIds.buy}>
       <h4>
@@ -50,17 +51,47 @@ function Buy() {
               },
             },
             {
-              header: "emission",
+              header: "supply",
               cell: (row) => {
                 return row.row.original.emission?.toLocaleString()
               },
             },
             {
+              header: "price",
+              cell: (row) => {
+                if (row.row.original.chain === "spacepussy") {
+                  return
+                }
+                return Number(row.row.original.price).toFixed(8) + "$"
+              },
+            },
+            {
+              header: "price change",
+              cell: (row) => {
+                if (row.row.original.chain === "spacepussy") {
+                  return
+                }
+                return row.row.original.priceChange + "%"
+              },
+            },
+            {
+              header: "volume",
+              cell: (row) => {
+                if (row.row.original.chain === "spacepussy") {
+                  return
+                }
+
+                return Number(row.row.original.volume)?.toFixed?.(2) + "$"
+              },
+            },
+            {
               header: "buy",
               cell: (row) => {
+                const isPussy = row.row.original.chain === "spacepussy"
+
                 return (
                   <a href={row.row.original.url} target="_blank">
-                    buy
+                    {!isPussy ? "buy" : "buy"}
                   </a>
                 )
               },
@@ -70,7 +101,11 @@ function Buy() {
             {
               chain: "solana",
               url: "https://raydium.io/swap/?outputMint=5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump&inputMint=sol",
-              emission: "-",
+              emission: 1_000_000_000,
+              price: data?.solana?.data?.attributes?.base_token_price_usd,
+              priceChange:
+                data?.solana?.data?.attributes?.price_change_percentage?.h24,
+              volume: data?.solana?.data?.attributes?.volume_usd?.h24,
               research: [
                 {
                   name: "dexscreener",
@@ -98,6 +133,11 @@ function Buy() {
               chain: "sui",
               url: "https://app.cetus.zone/swap?from=0x2::sui::SUI&to=0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY",
               emission: 1_000_000_000,
+              price: data?.sui?.data?.attributes?.base_token_price_usd,
+              priceChange:
+                data?.sui?.data?.attributes?.price_change_percentage?.h24,
+              volume: data?.sui?.data?.attributes?.volume_usd?.h24,
+
               research: [
                 {
                   name: "suivision",
@@ -107,7 +147,13 @@ function Buy() {
             },
             {
               chain: "spacepussy",
-              research: [],
+              url: "https://spacepussy.ai/teleport/swap",
+              research: [
+                {
+                  name: "warp",
+                  url: "https://spacepussy.ai/warp",
+                },
+              ],
             },
           ]}
         />
