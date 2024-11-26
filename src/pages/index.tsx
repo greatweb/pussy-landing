@@ -29,13 +29,17 @@ function getSuiData() {
   )
 }
 
+export function isServer() {
+  return typeof window === "undefined"
+}
+
 window.reset = () => localStorage.setItem("entered", "false")
 
 const IndexPage: React.FC<PageProps> = () => {
   const [solanaData, setSolanaData] = useState()
   const [suiData, setSuiData] = useState()
   const [entered, setEntered] = useState(
-    localStorage.getItem("entered") === "true"
+    !isServer() && localStorage.getItem("entered") === "true"
   )
 
   useEffect(() => {

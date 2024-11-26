@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import * as styles from "./Splash.module.scss"
+import { isServer } from "../../pages"
 
 const scaleInitValue = 0.9
 
 const spacePussy = require("./space-pussy.svg").default
 const portalPussyEnter = require("./portalPussyEnter.mp3").default
 
-const audioBtnObg = new Audio(portalPussyEnter)
+const audioBtnObg = !isServer() && new Audio(portalPussyEnter)
 
 const playAudioClick = () => {
   audioBtnObg.play()
