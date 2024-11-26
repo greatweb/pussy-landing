@@ -7,7 +7,7 @@ function Vision() {
   return (
     <section className={styles.section} id={MenuIds.vision}>
       <h4>
-        vision of <StrongText>superintelligence</StrongText>
+        vision of <StrongText searchLink>superintelligence</StrongText>
       </h4>
 
       <img src={require("./structure.png").default} />

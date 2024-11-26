@@ -1,5 +1,6 @@
 import React from "react"
 import BlockWithImage from "../../BlockWithImage/BlockWithImage"
+import * as styles from "./Balls.module.scss"
 
 function Balls() {
   return (
@@ -18,10 +19,33 @@ function Balls() {
             superintelligence.
           </p>
 
-          <ul>
-            <li>🟢 $BOOT: Bostrom blockchain</li>
-            <li>🟣 $PUSSY: SpacePussy blockchain</li>
-            <li> 🔵 $CYB: Cyber protocol </li>
+          <ul className={styles.wrapper}>
+            <li>
+              🟢 <strong>$BOOT</strong>:{" "}
+              <a href="https://cyb.ai" target="_blank" rel="noreferrer">
+                Bostrom
+              </a>{" "}
+              blockchain
+            </li>
+            <li>
+              🟣 <strong>$PUSSY</strong>:{" "}
+              <a href="https://spacepussy.ai/" target="_blank" rel="noreferrer">
+                SpacePussy
+              </a>{" "}
+              blockchain
+            </li>
+            <li>
+              {" "}
+              🔵 <strong>$CYB</strong>:{" "}
+              <a
+                href="https://github.com/cybercongress"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Cyber
+              </a>{" "}
+              protocol{" "}
+            </li>
           </ul>
         </>
       }

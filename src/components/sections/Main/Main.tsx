@@ -10,8 +10,8 @@ function Main() {
       </h2>
       <p>
         symbol of <StrongText searchLink>pleasure</StrongText>,{" "}
-        <StrongText>confidence</StrongText> and{" "}
-        <StrongText>unlimited growth</StrongText>
+        <StrongText searchLink>confidence</StrongText> and{" "}
+        <StrongText searchLink>unlimited growth</StrongText>
       </p>
 
       <div className={styles.content}>

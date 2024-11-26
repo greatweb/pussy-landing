@@ -163,7 +163,7 @@ function Buy({ data }) {
       <div className={styles.blocks}>
         {[
           {
-            title: "polycahain design",
+            title: "polychain design",
             text: "no need for bridges",
           },
           {

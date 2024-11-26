@@ -15,6 +15,7 @@ import Menu from "../components/Menu/Menu"
 import Button from "../components/xp/btnGrd"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Splash from "../components/Splash/Splash"
 
 function getSolData() {
   return axios.get(
@@ -28,9 +29,14 @@ function getSuiData() {
   )
 }
 
+window.reset = () => localStorage.setItem("entered", "false")
+
 const IndexPage: React.FC<PageProps> = () => {
   const [solanaData, setSolanaData] = useState()
   const [suiData, setSuiData] = useState()
+  const [entered, setEntered] = useState(
+    localStorage.getItem("entered") === "true"
+  )
 
   useEffect(() => {
     getSolData().then((res) => {
@@ -44,42 +50,53 @@ const IndexPage: React.FC<PageProps> = () => {
     })
   }, [])
 
+  function handleEnter() {
+    setEntered(true)
+    localStorage.setItem("entered", "true")
+  }
+
   return (
     <main className={styles.wrapper}>
       <Stars />
 
-      <aside>
-        <Menu />
-      </aside>
+      {!entered ? (
+        <Splash onEnter={handleEnter} />
+      ) : (
+        <>
+          <aside>
+            <Menu />
+          </aside>
 
-      <div className={styles.content}>
-        <Main />
-        <About />
-        <Pussyan />
-        <Balls />
-        <Vision />
-        <Neoreligion />
-        <ToTheMoon />
-        <Buy
-          data={{
-            solana: solanaData,
-            sui: suiData,
-          }}
-        />
-      </div>
+          <div className={styles.content}>
+            <Main />
+            <About />
+            <Pussyan />
+            <Balls />
+            <Vision />
+            <Neoreligion />
+            <ToTheMoon />
+            <Buy
+              data={{
+                solana: solanaData,
+                sui: suiData,
+              }}
+            />
+          </div>
 
-      <footer>
-        <Button
-          onClick={() => {
-            document
-              .getElementById("buy")
-              .scrollIntoView({ behavior: "smooth" })
-            window.history.pushState({}, "", "#buy")
-          }}
-        >
-          buy
-        </Button>
-      </footer>
+          <footer>
+            <Button
+              onClick={() => {
+                document
+                  .getElementById("buy")
+                  .scrollIntoView({ behavior: "smooth" })
+                window.history.pushState({}, "", "#buy")
+              }}
+            >
+              buy
+            </Button>
+          </footer>
+        </>
+      )}
     </main>
   )
 }

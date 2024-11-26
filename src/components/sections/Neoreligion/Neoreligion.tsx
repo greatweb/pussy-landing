@@ -7,7 +7,8 @@ function Neoreligion() {
   return (
     <section className={styles.section} id={MenuIds.neoreligion}>
       <h4>
-        <StrongText>$PUSSY</StrongText> is <StrongText>Neoreligion</StrongText>
+        <StrongText>$PUSSY</StrongText> is{" "}
+        <StrongText searchLink>Neoreligion</StrongText>
       </h4>
       <p>for the age of superintelligence</p>
 
