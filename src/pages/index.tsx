@@ -33,7 +33,9 @@ export function isServer() {
   return typeof window === "undefined"
 }
 
-window.reset = () => localStorage.setItem("entered", "false")
+if (!isServer()) {
+  window.reset = () => localStorage.setItem("entered", "false")
+}
 
 const IndexPage: React.FC<PageProps> = () => {
   const [solanaData, setSolanaData] = useState()
