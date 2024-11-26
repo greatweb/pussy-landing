@@ -28,7 +28,8 @@
 
   img {
     border-radius: 50%;
-    max-height: 142px;
+    max-height: 128px;
+    padding: 5px;
 
     &:nth-of-type(1) {
       position: relative;
@@ -46,4 +47,27 @@
   // img + img {
   // margin-left: -100px;
   // }
+
+  @media (width <= 480px) {
+    img {
+      max-height: 80px;
+    }
+  }
+}
+
+.blocks {
+  display: flex;
+  gap: 0 30px;
+
+  > div {
+    flex-grow: 1;
+  }
+
+  @media (width <= 480px) {
+    flex-direction: column;
+    gap: 30px 0;
+
+    max-width: 80%;
+    margin: 30px auto 0;
+  }
 }

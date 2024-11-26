@@ -1,8 +1,19 @@
 import React from "react"
 import * as styles from "./Main.module.scss"
 import { StrongText } from "../../StrongText/StrongText"
+import DisplaySmall from "../../DisplaySmall/DisplaySmall"
 
-function Main() {
+function Main({ data }) {
+  const totalVolume = (+data?.solana?.data?.attributes?.volume_usd?.h24 +
+    +data?.sui?.data?.attributes?.volume_usd?.h24) as string
+
+  console.log(totalVolume)
+
+  const totalCap = (+data?.solana?.data?.attributes?.fdv_usd +
+    +data?.sui?.data?.attributes?.fdv_usd) as string
+
+  console.log(totalCap)
+
   return (
     <section className={styles.wrapper}>
       <h2>
@@ -35,6 +46,23 @@ function Main() {
         <StrongText link="#vision">vision</StrongText> and{" "}
         <StrongText link="#frenz">frienz</StrongText>
       </p>
+
+      {totalVolume && (
+        <div className={styles.blocks}>
+          <DisplaySmall
+            title={"$" + Number(totalVolume).toFixed(0)}
+            content="24h volumes"
+          />
+          <DisplaySmall
+            title={"$" + String(totalCap).toLocaleLowerCase()}
+            content="total cap"
+          />
+          {/* <DisplaySmall
+            title={"$" + Number(totalVolume).toFixed(0)}
+            content="hodlers"
+          /> */}
+        </div>
+      )}
     </section>
   )
 }

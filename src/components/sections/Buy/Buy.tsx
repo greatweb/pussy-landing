@@ -4,6 +4,7 @@ import Table from "../../xp/Table/Table"
 import * as styles from "./Buy.module.scss"
 import { StrongText } from "../../StrongText/StrongText"
 import { MenuIds } from "../../Menu/Menu"
+import DisplaySmall from "../../DisplaySmall/DisplaySmall"
 
 function Buy({ data }) {
   console.log(data)
@@ -71,7 +72,18 @@ function Buy({ data }) {
                 if (row.row.original.chain === "spacepussy") {
                   return
                 }
-                return row.row.original.priceChange + "%"
+
+                const isNegative = row.row.original.priceChange < 0
+                return (
+                  <span
+                    style={{
+                      color: isNegative ? "#FF1744" : "#00FF00",
+                    }}
+                  >
+                    {isNegative ? "" : "+"}
+                    {row.row.original.priceChange}%
+                  </span>
+                )
               },
             },
             {
@@ -175,10 +187,7 @@ function Buy({ data }) {
             text: "collective learning in mind",
           },
         ].map((item) => (
-          <Display color="purple">
-            <h4>{item.title}</h4>
-            <p>{item.text}</p>
-          </Display>
+          <DisplaySmall title={item.title} content={item.text} />
         ))}
       </div>
     </section>

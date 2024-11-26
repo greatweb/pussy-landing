@@ -68,7 +68,12 @@ const IndexPage: React.FC<PageProps> = () => {
           </aside>
 
           <div className={styles.content}>
-            <Main />
+            <Main
+              data={{
+                solana: solanaData,
+                sui: suiData,
+              }}
+            />
             <About />
             <Pussyan />
             <Balls />

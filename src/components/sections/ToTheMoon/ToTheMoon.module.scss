@@ -20,14 +20,26 @@
     height: auto;
   }
 
+  p {
+    margin: 0;
+    line-height: 23px;
+    color: var(--text-color-2);
+  }
+
   ul {
     li + li {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
 
     li {
       font-size: clamp(1.5rem, 2.5vw, 2rem);
       color: #616161;
+      gap: 0 5px;
 
       span {
         color: white;
