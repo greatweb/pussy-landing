@@ -6,10 +6,23 @@ import { StrongText } from "../../StrongText/StrongText"
 import { MenuIds } from "../../Menu/Menu"
 import DisplaySmall from "../../DisplaySmall/DisplaySmall"
 
+const icons = {
+  dexscreener: "https://dexscreener.com/favicon.ico",
+  solscan: "https://solscan.io/favicon.ico",
+  birdeye: "https://v2.birdeye.so/favicon.ico",
+  rugcheck: "https://rugcheck.xyz/favicon.jpg",
+  geckoterminal: "https://www.geckoterminal.com/favicon.ico",
+  suivision: "https://suivision.xyz/favicon.ico",
+  warp: require("./images/warp.svg").default,
+  sui: require("./images/sui.svg").default,
+  solana: require("./images/solana.png").default,
+  spacepussy: "🟣",
+}
+
 function Buy({ data }) {
   console.log(data)
   return (
-    <section id={MenuIds.buy}>
+    <section id={MenuIds.buy} className={styles.wrapper}>
       <h4>
         In <StrongText>$PUSSY</StrongText> we trust
       </h4>
@@ -21,14 +34,22 @@ function Buy({ data }) {
               header: "chain",
               cell: (row) => {
                 const { chain, url } = row.row.original
+
                 return (
                   <a
                     href={url}
+                    className={styles.chain}
                     style={{
                       float: "left",
                     }}
                     target="_blank"
                   >
+                    {chain === "spacepussy" ? (
+                      <span>{icons[chain]}</span>
+                    ) : (
+                      <img src={icons[chain]} style={{ width: "16px" }} />
+                    )}
+
                     {chain}
                   </a>
                 )
@@ -42,8 +63,16 @@ function Buy({ data }) {
                   <ul className={styles.research}>
                     {research.map((r) => (
                       <li>
-                        <a href={r.url} target="_blank">
-                          {r.name}
+                        <a href={r.url} title={r.name} target="_blank">
+                          <img
+                            src={icons[r.name]}
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              marginRight: "5px",
+                            }}
+                          />
+                          {/* {r.name} */}
                         </a>
                       </li>
                     ))}
@@ -59,15 +88,16 @@ function Buy({ data }) {
             },
             {
               header: "price",
+
               cell: (row) => {
                 if (row.row.original.chain === "spacepussy") {
-                  return
+                  return <span className={styles.price}>try to get</span>
                 }
-                return Number(row.row.original.price).toFixed(8) + "$"
+                return "$ " + Number(row.row.original.price).toFixed(8)
               },
             },
             {
-              header: "price change",
+              header: "24h",
               cell: (row) => {
                 if (row.row.original.chain === "spacepussy") {
                   return
@@ -93,7 +123,17 @@ function Buy({ data }) {
                   return
                 }
 
-                return Number(row.row.original.volume)?.toFixed?.(2) + "$"
+                return "$ " + Number(row.row.original.volume)?.toFixed?.(2)
+              },
+            },
+            {
+              header: "cap",
+              cell: (row) => {
+                if (row.row.original.chain === "spacepussy") {
+                  return
+                }
+
+                return "$ " + Number(row.row.original.cap)?.toLocaleString?.()
               },
             },
             {
@@ -118,6 +158,7 @@ function Buy({ data }) {
               priceChange:
                 data?.solana?.data?.attributes?.price_change_percentage?.h24,
               volume: data?.solana?.data?.attributes?.volume_usd?.h24,
+              cap: data?.solana?.data?.attributes?.fdv_usd,
               research: [
                 {
                   name: "dexscreener",
@@ -149,6 +190,7 @@ function Buy({ data }) {
               priceChange:
                 data?.sui?.data?.attributes?.price_change_percentage?.h24,
               volume: data?.sui?.data?.attributes?.volume_usd?.h24,
+              cap: data?.sui?.data?.attributes?.fdv_usd,
 
               research: [
                 {

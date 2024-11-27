@@ -4,7 +4,7 @@ import * as styles from "./DisplaySmall.module.scss"
 
 function DisplaySmall({ title, content }) {
   return (
-    <Display color="purple">
+    <Display color="purple" noPadding>
       <div className={styles.wrapper}>
         <h6>{title}</h6>
         <p>{content}</p>

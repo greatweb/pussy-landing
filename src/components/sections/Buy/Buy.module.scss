@@ -1,9 +1,37 @@
+.wrapper {
+  table {
+    font-size: 14px;
+  }
+  table td {
+    white-space: nowrap;
+  }
+}
 .research {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  // flex-direction: column;
+  // align-items: flex-start;
+  // align-items: baseline;
+  position: relative;
+  top: 3px;
+  justify-content: flex-start;
+  gap: 0 5px;
 
   list-style-type: none;
+}
+
+.chain {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+
+  span {
+    font-size: 14px;
+  }
+}
+
+.price {
+  position: relative;
+  right: -50px;
 }
 
 .blocks {
@@ -13,18 +41,6 @@
 
   > div {
     flex-grow: 1;
-    text-align: center;
-
-    h4 {
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #616161;
-      font-size: 14px;
-    }
   }
 
   @media (width <= 480px) {

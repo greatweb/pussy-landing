@@ -50,11 +50,11 @@ function Main({ data }) {
       {totalVolume && (
         <div className={styles.blocks}>
           <DisplaySmall
-            title={"$" + Number(totalVolume).toFixed(0)}
+            title={"$ " + Number(totalVolume).toFixed(0)}
             content="24h volumes"
           />
           <DisplaySmall
-            title={"$" + String(totalCap).toLocaleLowerCase()}
+            title={"$ " + String(totalCap.toFixed(0)).toLocaleLowerCase()}
             content="total cap"
           />
           {/* <DisplaySmall
