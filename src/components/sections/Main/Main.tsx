@@ -10,7 +10,7 @@ function Main({ data }) {
   console.log(totalVolume)
 
   const totalCap = (+data?.solana?.data?.attributes?.fdv_usd +
-    data.sui.price * 1_000_000_000) as string
+    (data.sui?.price || 0) * 1_000_000_000) as string
 
   console.log(totalCap)
 
@@ -47,7 +47,7 @@ function Main({ data }) {
         <StrongText link="#frenz">frienz</StrongText>
       </p>
 
-      {totalVolume && (
+      {!!totalVolume && (
         <div className={styles.blocks}>
           <DisplaySmall
             title={"$ " + Number(totalVolume).toFixed(0)}
