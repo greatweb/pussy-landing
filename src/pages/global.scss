@@ -21,6 +21,7 @@ a {
   text-decoration: none;
 
   &:hover {
+    opacity: 0.9;
     text-decoration: underline !important;
   }
 }

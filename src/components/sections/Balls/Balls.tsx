@@ -36,12 +36,16 @@ function Balls() {
             </li>
             <li>
               {" "}
-              🔵 <strong>$CYB</strong>:{" "}
+              🔵{" "}
               <a
-                href="https://github.com/cybercongress"
+                href="https://cyb.ai/oracle/ask/cyb"
                 target="_blank"
                 rel="noreferrer"
               >
+                Cyber
+              </a>
+              :{" "}
+              <a href="https://cyber.page" target="_blank" rel="noreferrer">
                 Cyber
               </a>{" "}
               protocol{" "}
