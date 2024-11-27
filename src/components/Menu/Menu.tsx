@@ -82,7 +82,7 @@ function Menu() {
                   <span>{link.icon}</span>
                 )}
 
-                {link.label}
+                <span>{link.label}</span>
               </a>
             </li>
           )

@@ -8,6 +8,10 @@
     a {
       color: #d9d9d9;
 
+      &:hover {
+        text-decoration: unset !important;
+      }
+
       display: inline-flex;
       gap: 0 10px;
       align-items: center;
@@ -21,8 +25,11 @@
         height: auto;
       }
 
-      &:hover {
-        color: #00ff00;
+      span:last-of-type {
+        &:hover {
+          text-decoration: underline;
+          color: #00ff00;
+        }
       }
     }
 

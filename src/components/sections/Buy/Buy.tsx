@@ -17,6 +17,10 @@ const icons = {
   sui: require("./images/sui.svg").default,
   solana: require("./images/solana.png").default,
   spacepussy: "🟣",
+  cetus: "https://app.cetus.zone/favicon.ico",
+  raydium: "https://raydium.io/favicon.ico",
+  teleport: require("./images/teleport.svg").default,
+  gmgn: require("./images/gmgn.png").default,
 }
 
 function Buy({ data }) {
@@ -49,8 +53,8 @@ function Buy({ data }) {
                     ) : (
                       <img src={icons[chain]} style={{ width: "16px" }} />
                     )}
-
-                    {chain}
+                    {/* for css */}
+                    <span>{chain}</span>
                   </a>
                 )
               },
@@ -63,7 +67,12 @@ function Buy({ data }) {
                   <ul className={styles.research}>
                     {research.map((r) => (
                       <li>
-                        <a href={r.url} title={r.name} target="_blank">
+                        <a
+                          href={r.url}
+                          title={r.name}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <img
                             src={icons[r.name]}
                             style={{
@@ -83,7 +92,10 @@ function Buy({ data }) {
             {
               header: "supply",
               cell: (row) => {
-                return row.row.original.emission?.toLocaleString()
+                if (row.row.original.chain === "spacepussy") {
+                  return
+                }
+                return row.row.original.emission?.toLocaleString() + " 🟣"
               },
             },
             {
@@ -101,6 +113,10 @@ function Buy({ data }) {
               cell: (row) => {
                 if (row.row.original.chain === "spacepussy") {
                   return
+                }
+
+                if (row.row.original.chain === "sui") {
+                  return "-"
                 }
 
                 const isNegative = row.row.original.priceChange < 0
@@ -139,12 +155,14 @@ function Buy({ data }) {
             {
               header: "buy",
               cell: (row) => {
-                const isPussy = row.row.original.chain === "spacepussy"
-
                 return (
-                  <a href={row.row.original.url} target="_blank">
-                    {!isPussy ? "buy" : "buy"}
-                  </a>
+                  <div className={styles.buy}>
+                    {row.row.original.buy?.map((b) => (
+                      <a href={b.url} target="_blank" rel="noreferrer">
+                        <img src={icons[b.name]} style={{ width: "16px" }} />
+                      </a>
+                    ))}
+                  </div>
                 )
               },
             },
@@ -153,6 +171,16 @@ function Buy({ data }) {
             {
               chain: "solana",
               url: "https://raydium.io/swap/?outputMint=5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump&inputMint=sol",
+              buy: [
+                {
+                  name: "gmgn",
+                  url: "https://gmgn.ai/sol/token/5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump",
+                },
+                {
+                  name: "raydium",
+                  url: "https://raydium.io/swap/?outputMint=5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump&inputMint=sol",
+                },
+              ],
               emission: 1_000_000_000,
               price: data?.solana?.data?.attributes?.base_token_price_usd,
               priceChange:
@@ -167,6 +195,10 @@ function Buy({ data }) {
                 {
                   name: "solscan",
                   url: "https://solscan.io/token/5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump#holders",
+                },
+                {
+                  name: "gmgn",
+                  url: "https://gmgn.ai/sol/token/5qAWPGkRqb9aV7Yox4gfbJTbm1a9msaswKxyCirwpump",
                 },
                 {
                   name: "birdeye",
@@ -186,22 +218,37 @@ function Buy({ data }) {
               chain: "sui",
               url: "https://app.cetus.zone/swap?from=0x2::sui::SUI&to=0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY",
               emission: 1_000_000_000,
-              price: data?.sui?.data?.attributes?.base_token_price_usd,
-              priceChange:
-                data?.sui?.data?.attributes?.price_change_percentage?.h24,
-              volume: data?.sui?.data?.attributes?.volume_usd?.h24,
-              cap: data?.sui?.data?.attributes?.fdv_usd,
+              price: data?.sui?.price,
+              priceChange: "-",
+              volume: data?.sui?.pool?.vol_in_usd_24h,
+              cap: data?.sui?.price * 1_000_000_000,
+              buy: [
+                {
+                  name: "cetus",
+                  url: "https://app.cetus.zone/swap?from=0x2::sui::SUI&to=0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY",
+                },
+              ],
 
               research: [
                 {
                   name: "suivision",
                   url: "https://suivision.xyz/coin/0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY?tab=Holders",
                 },
+                {
+                  name: "cetus",
+                  url: "https://app.cetus.zone/liquidity/analytics?poolAddress=0xfec941f67693777b170dbd84edb14ec5afc1e4e07f65ce8c51286f06bd9615ab",
+                },
               ],
             },
             {
               chain: "spacepussy",
               url: "https://spacepussy.ai/teleport/swap",
+              buy: [
+                {
+                  name: "teleport",
+                  url: "https://spacepussy.ai/teleport/swap",
+                },
+              ],
               research: [
                 {
                   name: "warp",

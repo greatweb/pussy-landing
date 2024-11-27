@@ -23,10 +23,28 @@ function getSolData() {
   )
 }
 
-function getSuiData() {
-  return axios.get(
-    "https://api.geckoterminal.com/api/v2/networks/sui-network/pools/0xfec941f67693777b170dbd84edb14ec5afc1e4e07f65ce8c51286f06bd9615ab"
+async function getSuiData() {
+  // axios.get(
+  //   "https://api.geckoterminal.com/api/v2/networks/sui-network/pools/0xfec941f67693777b170dbd84edb14ec5afc1e4e07f65ce8c51286f06bd9615ab"
+  // )
+
+  const priceData = await axios.get(
+    "https://api-sui.cetus.zone/v2/sui/price?base_symbol_address=0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY"
   )
+
+  const poolData = await axios.get(
+    "https://api-sui.cetus.zone/v2/sui/stats_pools?coin_type=0x85acf4cf62c24cafffb9d354e024dfd2dc86d64610861010ea37c24b694be753::pussy::PUSSY,0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI&is_vaults=false&display_all_pools=true&has_mining=true&has_farming=true&no_incentives=true&order_by=-vol&limit=&offset=0"
+  )
+
+  const price = priceData.data.data.prices.find(
+    (i) => i.quote_symbol === "USD"
+  ).price
+  const pool = poolData.data.data.lp_list[0]
+
+  return {
+    price,
+    pool,
+  }
 }
 
 export function isServer() {
@@ -44,6 +62,8 @@ const IndexPage: React.FC<PageProps> = () => {
     !isServer() && localStorage.getItem("entered") === "true"
   )
 
+  console.log(suiData)
+
   useEffect(() => {
     getSolData().then((res) => {
       setSolanaData(res.data)
@@ -52,7 +72,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
   useEffect(() => {
     getSuiData().then((res) => {
-      setSuiData(res.data)
+      setSuiData(res)
     })
   }, [])
 

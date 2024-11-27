@@ -5,12 +5,12 @@ import DisplaySmall from "../../DisplaySmall/DisplaySmall"
 
 function Main({ data }) {
   const totalVolume = (+data?.solana?.data?.attributes?.volume_usd?.h24 +
-    +data?.sui?.data?.attributes?.volume_usd?.h24) as string
+    +data.sui?.pool?.vol_in_usd_24h) as string
 
   console.log(totalVolume)
 
   const totalCap = (+data?.solana?.data?.attributes?.fdv_usd +
-    +data?.sui?.data?.attributes?.fdv_usd) as string
+    data.sui.price * 1_000_000_000) as string
 
   console.log(totalCap)
 
