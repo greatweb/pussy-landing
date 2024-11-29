@@ -4,16 +4,9 @@ import { StrongText } from "../../StrongText/StrongText"
 import DisplaySmall from "../../DisplaySmall/DisplaySmall"
 import { MenuIds } from "../../Menu/Menu"
 
-function Main({ data }) {
+function Main({ data, totalCap }) {
   const totalVolume = (+data?.solana?.data?.attributes?.volume_usd?.h24 +
     +data.sui?.pool?.vol_in_usd_24h) as string
-
-  console.log(totalVolume)
-
-  const totalCap = (+data?.solana?.data?.attributes?.fdv_usd +
-    (data.sui?.price || 0) * 1_000_000_000) as string
-
-  console.log(totalCap)
 
   return (
     <section className={styles.wrapper} id={MenuIds.main}>

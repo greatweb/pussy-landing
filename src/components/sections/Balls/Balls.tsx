@@ -21,15 +21,31 @@ function Balls() {
 
           <ul className={styles.wrapper}>
             <li>
-              🟢 <strong>$BOOT</strong>:{" "}
+              🟢{" "}
+              <a
+                href="https://cyb.ai/oracle/ask/boot"
+                target="_blank"
+                rel="noreferrer"
+              >
+                $BOOT
+              </a>
+              :{" "}
               <a href="https://cyb.ai" target="_blank" rel="noreferrer">
                 Bostrom
               </a>{" "}
               blockchain
             </li>
             <li>
-              🟣 <strong>$PUSSY</strong>:{" "}
-              <a href="https://spacepussy.ai/" target="_blank" rel="noreferrer">
+              🟣{" "}
+              <a
+                href="https://cyb.ai/oracle/ask/pussy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                $PUSSY
+              </a>
+              :{" "}
+              <a href="https://spacepussy.ai" target="_blank" rel="noreferrer">
                 SpacePussy
               </a>{" "}
               blockchain

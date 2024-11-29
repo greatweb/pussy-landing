@@ -4,8 +4,9 @@ import Display from "../../xp/containerGradient/Display/Display"
 import DisplayTitle from "../../xp/containerGradient/DisplayTitle/DisplayTitle"
 import * as styles from "./ToTheMoon.module.scss"
 import { MenuIds } from "../../Menu/Menu"
+import Progress from "../../Progress/Progress"
 
-function ToTheMoon() {
+function ToTheMoon({ totalCap }) {
   return (
     <section id={MenuIds.progress}>
       <h4>
@@ -39,12 +40,20 @@ function ToTheMoon() {
         <Display color="purple" title={<DisplayTitle title="pussyan scale" />}>
           <p className={styles.text}>
             method of measuring a civilization's level of technological
-            advancement based on the value of $PUSSY
+            advancement based on the value of <StrongText>$PUSSY</StrongText>
           </p>
         </Display>
       </div>
 
-      {/* <div>progress</div> */}
+      <Progress
+        value={totalCap}
+        className={styles.progress}
+        max={1000000}
+        maxText="$ 1m"
+        valueText={`$ ${Number(totalCap.toFixed(0))
+          .toLocaleString()
+          .replace(",", " ")}`}
+      />
     </section>
   )
 }

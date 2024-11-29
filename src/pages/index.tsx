@@ -117,6 +117,10 @@ const IndexPage: React.FC<PageProps> = () => {
     localStorage.setItem("entered", "true")
   }
 
+  const totalCap =
+    +solanaData?.data?.attributes?.fdv_usd +
+    (suiData?.price || 0) * 1_000_000_000
+
   return (
     <main className={styles.wrapper}>
       <Stars />
@@ -131,6 +135,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
           <div className={styles.content}>
             <Main
+              totalCap={totalCap}
               data={{
                 solana: solanaData,
                 sui: suiData,
@@ -141,7 +146,7 @@ const IndexPage: React.FC<PageProps> = () => {
             <Balls />
             <Vision />
             <Neoreligion />
-            <ToTheMoon />
+            <ToTheMoon totalCap={totalCap} />
             <Buy
               data={{
                 solana: solanaData,

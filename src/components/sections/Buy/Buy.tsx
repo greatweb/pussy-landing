@@ -95,7 +95,11 @@ function Buy({ data }) {
                 if (row.row.original.chain === "spacepussy") {
                   return
                 }
-                return row.row.original.emission?.toLocaleString() + " 🟣"
+                return (
+                  row.row.original.emission
+                    ?.toLocaleString()
+                    .replaceAll(",", " ") + " 🟣"
+                )
               },
             },
             {
@@ -149,7 +153,12 @@ function Buy({ data }) {
                   return
                 }
 
-                return "$ " + Number(row.row.original.cap)?.toLocaleString?.()
+                return (
+                  "$ " +
+                  Number(row.row.original.cap)
+                    ?.toLocaleString?.()
+                    .replaceAll(",", " ")
+                )
               },
             },
             {

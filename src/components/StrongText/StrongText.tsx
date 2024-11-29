@@ -14,7 +14,7 @@ export function StrongText({ children, link, searchLink }) {
         }
         document.querySelector(link)?.scrollIntoView({
           behavior: "smooth",
-          block: "start",
+          block: "center",
         })
         e.preventDefault()
       },

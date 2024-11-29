@@ -52,6 +52,10 @@
       color: #616161;
       gap: 0 5px;
 
+      &:last-of-type {
+        color: var(--color-primary);
+      }
+
       span {
         color: white;
       }
@@ -87,4 +91,8 @@
       max-width: 100%;
     }
   }
+}
+
+.progress {
+  margin-top: 100px !important;
 }
