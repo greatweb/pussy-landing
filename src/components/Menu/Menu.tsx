@@ -15,7 +15,7 @@ export enum MenuIds {
 }
 
 export const idToHrefMap = {
-  [MenuIds.main]: "#main",
+  [MenuIds.main]: "#",
   [MenuIds.spacepussy]: "#spacepussy",
   [MenuIds.frenz]: "#frenz",
   [MenuIds.vision]: "#vision",
@@ -128,15 +128,15 @@ function Menu() {
                     e.preventDefault()
                     window.scrollTo({ top: 0, behavior: "smooth" })
                     // window.history.pushState({}, "", link.href)
-                    window.location.hash = link.href
+                    // window.location.hash = link.href
                     return
                   }
 
                   const el = document.getElementById(link.href.slice(1))
                   if (el) {
                     e.preventDefault()
-                    el.scrollIntoView({ behavior: "smooth" })
-                    window.location.hash = link.href
+                    el.scrollIntoView({ behavior: "smooth", block: "center" })
+                    // window.location.hash = link.href
                     // window.history.pushState({}, "", link.href)
                   }
                 }}

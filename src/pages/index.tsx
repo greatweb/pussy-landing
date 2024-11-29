@@ -51,7 +51,7 @@ export function isServer() {
   return typeof window === "undefined"
 }
 
-if ("serviceWorker" in navigator) {
+if (!isServer() && "serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((registrations) => {
     registrations.forEach((registration) => {
       registration.unregister()
