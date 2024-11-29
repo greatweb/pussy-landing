@@ -156,6 +156,16 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
 
           <footer>
+            <a
+              href="https://t.me/CyberGlobalHub"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={require("../images/telegram.png").default}
+                alt="telegram"
+              />
+            </a>
             <Button
               onClick={() => {
                 document
@@ -166,6 +176,14 @@ const IndexPage: React.FC<PageProps> = () => {
             >
               buy
             </Button>
+
+            <a
+              href="https://github.com/cybercongress"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={require("../images/github.png").default} alt="github" />
+            </a>
           </footer>
         </>
       )}

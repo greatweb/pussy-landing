@@ -72,23 +72,30 @@
     }
 
     img {
-      width: 100%;
+      width: 90%;
+      margin: 0 auto;
       max-height: 350px;
       position: relative;
+
+      // clip image to round
+      clip-path: circle(50% at 50% 50%);
+
       z-index: -1;
     }
 
     .contentWrapper {
       position: relative;
+      z-index: 1;
 
       p {
         font-size: 16px;
       }
 
       &::before {
-        filter: blur(40px);
-        // background-color: aliceblue;
-        content: "";
+        filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.878);
+        content: " ";
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
@@ -96,7 +103,7 @@
         height: 100%;
         z-index: 0;
       }
-      margin-top: -200px;
+      margin-top: -170px;
     }
   }
 }
