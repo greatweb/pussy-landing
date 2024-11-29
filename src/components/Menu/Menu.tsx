@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import * as styles from "./Menu.module.scss"
 import { log } from "node:console"
+import { isServer } from "../../pages"
 
 export enum MenuIds {
   main = "main",
@@ -25,28 +26,33 @@ export const idToHrefMap = {
 }
 
 // Extend history methods
-;(function () {
-  const originalPushState = history.pushState
-  const originalReplaceState = history.replaceState
 
-  // Override pushState
-  history.pushState = function (...args) {
-    const result = originalPushState.apply(this, args)
-    window.dispatchEvent(
-      new CustomEvent("statechange", { detail: { type: "pushState", args } })
-    )
-    return result
-  }
+if (!isServer()) {
+  ;(function () {
+    const originalPushState = history.pushState
+    const originalReplaceState = history.replaceState
 
-  // Override replaceState
-  history.replaceState = function (...args) {
-    const result = originalReplaceState.apply(this, args)
-    window.dispatchEvent(
-      new CustomEvent("statechange", { detail: { type: "replaceState", args } })
-    )
-    return result
-  }
-})()
+    // Override pushState
+    history.pushState = function (...args) {
+      const result = originalPushState.apply(this, args)
+      window.dispatchEvent(
+        new CustomEvent("statechange", { detail: { type: "pushState", args } })
+      )
+      return result
+    }
+
+    // Override replaceState
+    history.replaceState = function (...args) {
+      const result = originalReplaceState.apply(this, args)
+      window.dispatchEvent(
+        new CustomEvent("statechange", {
+          detail: { type: "replaceState", args },
+        })
+      )
+      return result
+    }
+  })()
+}
 
 const links = [
   {

@@ -97,7 +97,7 @@ const IndexPage: React.FC<PageProps> = () => {
       },
       {
         root: null, // Use the viewport as the root
-        threshold: 0.5, // Trigger when 50% of the block is visible
+        threshold: 1, // Trigger when 50% of the block is visible
       }
     )
 
