@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import * as styles from "./Menu.module.scss"
+import { log } from "node:console"
 
 export enum MenuIds {
   main = "main",
@@ -9,7 +10,43 @@ export enum MenuIds {
   neoreligion = "neoreligion",
   progress = "progress",
   buy = "buy",
+  balls = "balls",
 }
+
+export const idToHrefMap = {
+  [MenuIds.main]: "#main",
+  [MenuIds.spacepussy]: "#spacepussy",
+  [MenuIds.frenz]: "#frenz",
+  [MenuIds.vision]: "#vision",
+  [MenuIds.neoreligion]: "#neoreligion",
+  [MenuIds.progress]: "#progress",
+  [MenuIds.buy]: "#buy",
+  [MenuIds.balls]: "#balls",
+}
+
+// Extend history methods
+;(function () {
+  const originalPushState = history.pushState
+  const originalReplaceState = history.replaceState
+
+  // Override pushState
+  history.pushState = function (...args) {
+    const result = originalPushState.apply(this, args)
+    window.dispatchEvent(
+      new CustomEvent("statechange", { detail: { type: "pushState", args } })
+    )
+    return result
+  }
+
+  // Override replaceState
+  history.replaceState = function (...args) {
+    const result = originalReplaceState.apply(this, args)
+    window.dispatchEvent(
+      new CustomEvent("statechange", { detail: { type: "replaceState", args } })
+    )
+    return result
+  }
+})()
 
 const links = [
   {
@@ -51,6 +88,23 @@ const links = [
 ]
 
 function Menu() {
+  const [currentBlock, setCurrentBlock] = useState(MenuIds.main)
+
+  useEffect(() => {
+    function onChange() {
+      // debugger
+      setCurrentBlock(window.location.hash.slice(1) as MenuIds)
+    }
+
+    window.addEventListener("statechange", onChange)
+
+    return () => {
+      window.removeEventListener("statechange", onChange)
+    }
+  }, [])
+
+  console.log(currentBlock)
+
   return (
     <nav className={styles.wrapper}>
       <ul>
@@ -60,11 +114,15 @@ function Menu() {
             <li key={link.label}>
               <a
                 href={link.href}
+                className={
+                  currentBlock === link.href.slice(1) ? styles.active : ""
+                }
                 onClick={(e) => {
                   if (link.href === "#") {
                     e.preventDefault()
                     window.scrollTo({ top: 0, behavior: "smooth" })
-                    window.history.pushState({}, "", link.href)
+                    // window.history.pushState({}, "", link.href)
+                    window.location.hash = link.href
                     return
                   }
 
@@ -72,7 +130,8 @@ function Menu() {
                   if (el) {
                     e.preventDefault()
                     el.scrollIntoView({ behavior: "smooth" })
-                    window.history.pushState({}, "", link.href)
+                    window.location.hash = link.href
+                    // window.history.pushState({}, "", link.href)
                   }
                 }}
               >

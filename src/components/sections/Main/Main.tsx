@@ -2,6 +2,7 @@ import React from "react"
 import * as styles from "./Main.module.scss"
 import { StrongText } from "../../StrongText/StrongText"
 import DisplaySmall from "../../DisplaySmall/DisplaySmall"
+import { MenuIds } from "../../Menu/Menu"
 
 function Main({ data }) {
   const totalVolume = (+data?.solana?.data?.attributes?.volume_usd?.h24 +
@@ -15,7 +16,7 @@ function Main({ data }) {
   console.log(totalCap)
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} id={MenuIds.main}>
       <h2>
         <StrongText>$PUSSY</StrongText>
       </h2>

@@ -32,6 +32,10 @@
   &.reverse {
     flex-direction: row-reverse;
 
+    div > div {
+      text-align: right;
+    }
+
     header {
       text-align: right;
 

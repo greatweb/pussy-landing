@@ -11,7 +11,7 @@ import Balls from "../components/sections/Balls/Balls"
 import Vision from "../components/sections/Vision/Vision"
 import Neoreligion from "../components/sections/Neoreligion/Neoreligion"
 import ToTheMoon from "../components/sections/ToTheMoon/ToTheMoon"
-import Menu from "../components/Menu/Menu"
+import Menu, { idToHrefMap } from "../components/Menu/Menu"
 import Button from "../components/xp/btnGrd"
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -74,6 +74,34 @@ const IndexPage: React.FC<PageProps> = () => {
     getSuiData().then((res) => {
       setSuiData(res)
     })
+  }, [])
+
+  useEffect(() => {
+    const blocks = document.querySelectorAll("main > div > section")
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log(`${entry.target.id} is in view!`)
+
+            // window.location.hash = idToHrefMap[entry.target.id]
+            window.history.pushState({}, "", `${idToHrefMap[entry.target.id]}`)
+            // Add an action or class
+            // entry.target.classList.add("in-view")
+          } else {
+            // Optional: Handle when the block leaves the view
+            // entry.target.classList.remove("in-view")
+          }
+        })
+      },
+      {
+        root: null, // Use the viewport as the root
+        threshold: 0.5, // Trigger when 50% of the block is visible
+      }
+    )
+
+    blocks.forEach((block) => observer.observe(block))
   }, [])
 
   function handleEnter() {

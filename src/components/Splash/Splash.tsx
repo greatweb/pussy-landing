@@ -28,6 +28,7 @@ function Splash({ onEnter }) {
 
   return (
     <div
+      className={styles.wrapper}
       style={{
         position: "fixed",
         zIndex: "3",
@@ -43,7 +44,7 @@ function Splash({ onEnter }) {
         onClick={() => onClickSpacePussy()}
         className={styles.buttonSpacePussy}
       >
-        <div className={styles.textSpacePussy}>enter</div>
+        {/* <div className={styles.textSpacePussy}>enter</div> */}
         {/* <img
         className={styles.arrowSpacePussy}
         src={rocketSpacePussy}
