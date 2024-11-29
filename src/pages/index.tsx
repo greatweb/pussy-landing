@@ -51,6 +51,14 @@ export function isServer() {
   return typeof window === "undefined"
 }
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => {
+      registration.unregister()
+    })
+  })
+}
+
 if (!isServer()) {
   window.reset = () => localStorage.setItem("entered", "false")
 }
