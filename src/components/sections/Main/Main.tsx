@@ -14,9 +14,10 @@ function Main({ data, totalCap }) {
         <StrongText>$PUSSY</StrongText>
       </h2>
       <p>
-        symbol of <StrongText searchLink>pleasure</StrongText>,{" "}
-        <StrongText searchLink>confidence</StrongText> and{" "}
-        <StrongText searchLink>unlimited growth</StrongText>
+        symbol of{" "}
+        <StrongText link={"#" + MenuIds.spacepussy}>pleasure</StrongText>,{" "}
+        <StrongText link={"#" + MenuIds.balls}>confidence</StrongText> and{" "}
+        <StrongText link={"#" + MenuIds.frenz}>unlimited growth</StrongText>
       </p>
 
       <div className={styles.content}>
