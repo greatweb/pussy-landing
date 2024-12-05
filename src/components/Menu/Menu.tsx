@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import * as styles from "./Menu.module.scss"
 import { log } from "node:console"
 import { isServer } from "../../pages"
+import CurrentApp from "../CurrentApp/CurrentApp"
 
 export enum MenuIds {
   main = "main",
@@ -112,48 +113,51 @@ function Menu() {
   console.log(currentBlock)
 
   return (
-    <nav className={styles.wrapper}>
-      <ul>
-        {links.map((link) => {
-          const isImg = link.icon.length > 3
-          return (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className={
-                  currentBlock === link.href.slice(1) ? styles.active : ""
-                }
-                onClick={(e) => {
-                  if (link.href === "#") {
-                    e.preventDefault()
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                    // window.history.pushState({}, "", link.href)
-                    // window.location.hash = link.href
-                    return
+    <>
+      <CurrentApp currentBlock={currentBlock} />
+      <nav className={styles.wrapper}>
+        <ul>
+          {links.map((link) => {
+            const isImg = link.icon.length > 3
+            return (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className={
+                    currentBlock === link.href.slice(1) ? styles.active : ""
                   }
+                  onClick={(e) => {
+                    if (link.href === "#") {
+                      e.preventDefault()
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                      // window.history.pushState({}, "", link.href)
+                      // window.location.hash = link.href
+                      return
+                    }
 
-                  const el = document.getElementById(link.href.slice(1))
-                  if (el) {
-                    e.preventDefault()
-                    el.scrollIntoView({ behavior: "smooth", block: "center" })
-                    // window.location.hash = link.href
-                    // window.history.pushState({}, "", link.href)
-                  }
-                }}
-              >
-                {isImg ? (
-                  <img src={link.icon} alt={link.label} />
-                ) : (
-                  <span>{link.icon}</span>
-                )}
+                    const el = document.getElementById(link.href.slice(1))
+                    if (el) {
+                      e.preventDefault()
+                      el.scrollIntoView({ behavior: "smooth", block: "center" })
+                      // window.location.hash = link.href
+                      // window.history.pushState({}, "", link.href)
+                    }
+                  }}
+                >
+                  {isImg ? (
+                    <img src={link.icon} alt={link.label} />
+                  ) : (
+                    <span>{link.icon}</span>
+                  )}
 
-                <span>{link.label}</span>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    </>
   )
 }
 
