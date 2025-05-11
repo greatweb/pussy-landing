@@ -32,6 +32,7 @@
 .textSpacePussy {
   font-size: 20px;
   transition: 1s;
+  min-width: 200px;
 
   &:hover {
     font-size: 24px;

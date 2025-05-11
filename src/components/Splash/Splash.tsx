@@ -44,7 +44,7 @@ function Splash({ onEnter }) {
         onClick={() => onClickSpacePussy()}
         className={styles.buttonSpacePussy}
       >
-        {/* <div className={styles.textSpacePussy}>enter</div> */}
+        <div className={styles.textSpacePussy}>click to enter</div>
         {/* <img
         className={styles.arrowSpacePussy}
         src={rocketSpacePussy}
